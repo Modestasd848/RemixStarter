@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "@remix-run/react";
+import { Link, NavLink, Outlet } from '@remix-run/react';
 
 export default function PublicLayout() {
   return (
@@ -17,9 +17,10 @@ export default function PublicLayout() {
 }
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/login", label: "Login" },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/login', label: 'Login' },
+  { href: '/users', label: 'Users' },
 ];
 function Navigation() {
   return (
@@ -34,7 +35,7 @@ function Navigation() {
               end
               to={link.href}
               className={({ isActive }) =>
-                isActive ? "underline pointer-events-none" : "hover:opacity-50"
+                isActive ? 'underline pointer-events-none' : 'hover:opacity-50'
               }
             >
               {link.label}
