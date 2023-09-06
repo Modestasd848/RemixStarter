@@ -14,13 +14,14 @@ export const action = async ({ request, params }: ActionArgs) => {
   const { email, name } = await zx.parseForm(request, {
     email: z.string().email(),
     name: z.string().min(6),
+    id: zx.IntAsString.optional(),
   });
   await db.insert(Users).values({ name, email, image: '' });
 
   return redirect('/users');
 };
 
-export default function NewRecipe() {
+export default function NewUser() {
   return (
     <div style={{ padding: '20px' }}>
       <h2>Add a New Recipe</h2>
@@ -30,7 +31,7 @@ export default function NewRecipe() {
 
         <button type="submit">Submit</button>
       </form>
-      <Link to="/recipies">Go back to list</Link>
+      <Link to="/users">Go back to list</Link>
     </div>
   );
 }
