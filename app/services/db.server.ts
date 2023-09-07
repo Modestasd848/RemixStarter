@@ -21,8 +21,8 @@ export const Users = pgTable(
   }
 );
 
-export async function getUserById(id: number) {
-  const [user] = await db.select().from(Users).where({ id }).execute();
+export async function getUserById(userId: number) {
+  const [user] = await db.select().from(Users).where({ id: userId }).execute();
 
   return user;
 }

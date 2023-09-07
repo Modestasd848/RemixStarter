@@ -6,22 +6,8 @@ import { zx } from 'zodix';
 import { getUserById } from '~/services/db.server';
 
 export async function loader({ params }: LoaderArgs) {
-  const { id } = zx.parseParams(
-    params,
-    { id: zx.IntAsString.optional() },
-    { message: 'Invalid userId parameter', status: 400 }
-  );
-
-  if (id !== undefined) {
-    const user = await getUserById(id);
-    if (user) {
-      return { user };
-    } else {
-      return { error: 'User not found' };
-    }
-  } else {
-    return { error: 'Invalid userId' };
-  }
+  const { userId } = zx.parseParams(params, { userId: zx.IntAsString.optional() });
+  return getUserById(id);
 }
 
 export default function User() {
